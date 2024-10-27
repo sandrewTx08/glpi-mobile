@@ -1,0 +1,6 @@
+<ion-accordion-group *ngIf="(tasks$ | async) || [] as tasks">
+  <app-ticket-accordion
+    *ngFor="let task of tasks"
+    [ticketTask]="task"
+  ></app-ticket-accordion>
+</ion-accordion-group>

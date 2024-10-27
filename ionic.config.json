@@ -1,0 +1,7 @@
+{
+  "name": "glpi-mobile",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

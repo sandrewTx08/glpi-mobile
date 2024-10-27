@@ -1,0 +1,17 @@
+<form
+  action=""
+  [formGroup]="loginForm"
+  (ngSubmit)="login()"
+  class="mt-4 m-auto"
+>
+  <ion-input fill="solid" label="User" type="text" formControlName="username" />
+
+  <ion-input
+    fill="solid"
+    label="Password"
+    type="password"
+    formControlName="password"
+  />
+
+  <ion-button type="submit">Login</ion-button>
+</form>

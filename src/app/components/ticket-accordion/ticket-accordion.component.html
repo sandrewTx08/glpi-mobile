@@ -1,0 +1,40 @@
+<ion-accordion [value]="ticketTask.id">
+  <ion-item slot="header" class="flex-wrap gap-4 !flex" color="light">
+    <ion-label>{{ ticketTask.name }}</ion-label>
+
+    <ion-label class="inline"
+      >Modified: {{ ticketTask.dateMod | date : "short" }}</ion-label
+    >
+
+    <ion-button (click)="$event.stopPropagation(); createTicketTask()"
+      >Add task</ion-button
+    >
+  </ion-item>
+
+  <div class="ion-padding" slot="content">
+    <ion-list *ngIf="ticketTasks$ | async as ticketTasks">
+      <ion-list *ngFor="let ticketTask of ticketTasks">
+        <ion-button color="" (click)="start(ticketTask)">Start</ion-button>
+
+        <ion-button color="" (click)="stop(ticketTask)">Stop</ion-button>
+
+        <ion-label
+          >{{ (ticketTask.actionTime / 60).toFixed(2) }} minutes</ion-label
+        >
+
+        <ion-textarea
+          fill="solid"
+          labelPlacement="stacked"
+          [autoGrow]="true"
+          (ionInput)="
+            updateTicketTask(ticketTask.id, {
+              content: $event.target.value || ''
+            })
+          "
+          [value]="ticketTask.content"
+          label="Modified: {{ ticketTask.date_mod | date : 'short' }}"
+        ></ion-textarea>
+      </ion-list>
+    </ion-list>
+  </div>
+</ion-accordion>
